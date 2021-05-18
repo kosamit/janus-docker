@@ -63,15 +63,8 @@ RUN cd /root && \
   make install && \
   make configs
 
-# Set Janus launch shell
-RUN cd /root/janus-gateway/ && \
-  touch run_janus.sh && \
-  echo "#!/bin/sh" >>run_janus.sh && \
-  echo "/opt/janus/bin/janus &" >>run_janus.sh && \
-  chmod 755 run_janus.sh
-
 EXPOSE 8088
 
 USER root
 
-CMD ["/root/janus-gateway/run_janus.sh"]
+CMD ["/opt/janus/bin/janus"]
