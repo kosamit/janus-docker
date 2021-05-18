@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  janus:
+    build:
+      context: .
+      dockerfile: ./janus/Dockerfile
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "8088:8088"
