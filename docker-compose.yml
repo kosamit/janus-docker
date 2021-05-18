@@ -9,5 +9,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+    volumes: 
+      - ./janus/config:/opt/janus/etc/janus
     ports:
       - "8088:8088"
