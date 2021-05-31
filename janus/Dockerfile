@@ -4,12 +4,16 @@ FROM debian
 # OS Update
 RUN apt-get update
 
-# Required library installation
-RUN apt install libmicrohttpd-dev libjansson-dev libssl-dev \
- libsofia-sip-ua-dev libglib2.0-dev libopus-dev libogg-dev \
- libcurl4-openssl-dev liblua5.3-dev libconfig-dev \
- pkg-config gengetopt libtool automake gtk-doc-tools doxygen \
- graphviz libnanomsg-dev cmake -y --fix-missing
+# Install Required libraries
+RUN apt install -y --fix-missing libmicrohttpd-dev libjansson-dev libssl-dev \
+  libsofia-sip-ua-dev libglib2.0-dev libopus-dev libogg-dev \
+  libcurl4-openssl-dev liblua5.3-dev libconfig-dev \
+  pkg-config gengetopt libtool automake gtk-doc-tools doxygen \
+  graphviz libnanomsg-dev cmake
+
+# Install Required libraries for videoroom recording
+RUN apt install -y --fix-missing \
+  libglib2.0-dev libjansson-dev libavutil-dev libavcodec-dev libavformat-dev vorbis-tools zlib1g-dev
 
 # Install the command used for installation
 RUN apt-get install -y wget && \
@@ -17,7 +21,7 @@ RUN apt-get install -y wget && \
  apt-get install git -y && \
  apt-get install -y curl
 
-# libnice
+# Install libnice
 RUN PATH="/usr/local/bin:$PATH"
 RUN yes | apt install python3-pip
 RUN yes | pip3 install meson
@@ -27,7 +31,7 @@ RUN cd /root && \
   cd ./libnice && \
   meson --prefix=/usr build && ninja -C build && ninja -C build install
 
-# libsrtp
+# Install libsrtp
 RUN cd /root && \
   wget https://github.com/cisco/libsrtp/archive/v2.2.0.tar.gz && \
   tar xfv v2.2.0.tar.gz && \
@@ -35,7 +39,7 @@ RUN cd /root && \
   ./configure --prefix=/usr --enable-openssl && \
   make shared_library && make install
 
-# usrsctp
+# Install usrsctp
 RUN cd /root && \
   git clone https://github.com/sctplab/usrsctp && \
   cd ./usrsctp && \
@@ -43,7 +47,7 @@ RUN cd /root && \
   ./configure --prefix=/usr --disable-programs --disable-inet --disable-inet6 && \
    make && make install
 
-# libwebsockets
+# install libwebsockets
 RUN cd /root && \
   git clone https://libwebsockets.org/repo/libwebsockets && \
   cd ./libwebsockets && \
@@ -58,7 +62,7 @@ RUN cd /root && \
   git clone https://github.com/meetecho/janus-gateway.git && \
   cd janus-gateway && \
   sh autogen.sh && \
-  ./configure --prefix=/opt/janus && \
+  ./configure --prefix=/opt/janus --enable-post-processing && \
   make && \
   make install && \
   make configs

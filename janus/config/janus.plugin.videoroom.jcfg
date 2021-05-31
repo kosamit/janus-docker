@@ -68,6 +68,18 @@ room-1234: {
 	#rec_dir = "/path/to/recordings-folder"
 }
 
+room-1001: {
+	description = "Recording Test"
+	secret = "adminpwd"
+	publishers = 12
+	bitrate = 128000
+	fir_freq = 10
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = true
+	rec_dir = "/opt/janus/share/janus/recordings"
+}
+
 # This other demo room here is only there in case you want to play with
 # the VP9 SVC support. Notice that you'll need a Chrome launched with
 # the flag that enables that support, or otherwise you'll be using just
