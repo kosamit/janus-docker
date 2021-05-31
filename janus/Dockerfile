@@ -13,7 +13,7 @@ RUN apt install -y --fix-missing libmicrohttpd-dev libjansson-dev libssl-dev \
 
 # Install Required libraries for videoroom recording
 RUN apt install -y --fix-missing \
-  libglib2.0-dev libjansson-dev libavutil-dev libavcodec-dev libavformat-dev vorbis-tools zlib1g-dev
+  libglib2.0-dev libjansson-dev libavutil-dev libavcodec-dev libavformat-dev vorbis-tools zlib1g-dev bc ffmpeg
 
 # Install the command used for installation
 RUN apt-get install -y wget && \
