@@ -5,14 +5,14 @@ FROM debian
 RUN apt-get update
 
 # Install Required libraries
-RUN apt install -y --fix-missing libmicrohttpd-dev libjansson-dev libssl-dev \
+RUN apt-get install -y --fix-missing libmicrohttpd-dev libjansson-dev libssl-dev \
   libsofia-sip-ua-dev libglib2.0-dev libopus-dev libogg-dev \
   libcurl4-openssl-dev liblua5.3-dev libconfig-dev \
   pkg-config gengetopt libtool automake gtk-doc-tools doxygen \
   graphviz libnanomsg-dev cmake
 
 # Install Required libraries for videoroom recording
-RUN apt install -y --fix-missing \
+RUN apt-get install -y --fix-missing \
   libglib2.0-dev libjansson-dev libavutil-dev libavcodec-dev libavformat-dev vorbis-tools zlib1g-dev bc ffmpeg
 
 # Install the command used for installation
@@ -23,7 +23,7 @@ RUN apt-get install -y wget && \
 
 # Install libnice
 RUN PATH="/usr/local/bin:$PATH"
-RUN yes | apt install python3-pip
+RUN yes | apt-get install python3-pip
 RUN yes | pip3 install meson
 RUN yes | pip3 install ninja
 RUN cd /root && \
