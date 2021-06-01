@@ -67,7 +67,7 @@ RUN cd /root && \
   make install && \
   make configs
 
-EXPOSE 8088
+EXPOSE 8088 8188
 
 USER root
 
