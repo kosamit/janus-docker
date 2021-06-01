@@ -80,6 +80,54 @@ room-1001: {
 	rec_dir = "/opt/janus/share/janus/recordings"
 }
 
+room-1002: {
+	description = "High Bitrate(2mbps) and Low FirFreq Test Room"
+	secret = "adminpwd"
+	publishers = 40
+	bitrate = 2048000
+	fir_freq = 10
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = false
+	#rec_dir = "/path/to/recordings-folder"
+}
+
+room-1003: {
+	description = "Low Bitrate(128kbps) and High FirFreq(30) Test Room"
+	secret = "adminpwd"
+	publishers = 40
+	bitrate = 128000
+	fir_freq = 30
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = false
+	#rec_dir = "/path/to/recordings-folder"
+}
+
+room-1004: {
+	description = "High Bitrate(2mbps) and High FirFreq(30) Test Room"
+	secret = "adminpwd"
+	publishers = 40
+	bitrate = 2048000
+	fir_freq = 30
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = false
+	#rec_dir = "/path/to/recordings-folder"
+}
+
+room-1005: {
+	description = "High Bitrate(2mbps) and No FirFreq(0) Test Room"
+	secret = "adminpwd"
+	publishers = 40
+	bitrate = 2048000
+	fir_freq = 0
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = false
+	#rec_dir = "/path/to/recordings-folder"
+}
+
 # This other demo room here is only there in case you want to play with
 # the VP9 SVC support. Notice that you'll need a Chrome launched with
 # the flag that enables that support, or otherwise you'll be using just
