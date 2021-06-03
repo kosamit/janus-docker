@@ -128,6 +128,22 @@ room-1005: {
 	#rec_dir = "/path/to/recordings-folder"
 }
 
+room-1006: {
+	description = "Audio level Test Room"
+	secret = "adminpwd"
+	publishers = 40
+	bitrate = 2000000
+	fir_freq = 30
+	#audiocodec = "opus"
+	#videocodec = "vp8"
+	record = false
+	audiolevel_event = true
+	# audiolevel_ext = yes
+	# audiolevel_event = yes
+	# audio_active_packets = 50
+	audio_level_average = 60
+}
+
 # This other demo room here is only there in case you want to play with
 # the VP9 SVC support. Notice that you'll need a Chrome launched with
 # the flag that enables that support, or otherwise you'll be using just
